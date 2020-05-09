@@ -1,0 +1,68 @@
+CREATE DATABASE json CHARACTER SET 'utf8';
+
+USE json;
+
+CREATE TABLE `movies` (
+  `title` TEXT NOT NULL);
+
+
+
+CREATE DATABASE TpChat CHARACTER SET 'utf8';
+
+USE TpChat;
+
+CREATE TABLE `users` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `last_name` VARCHAR(45) NOT NULL,
+  `first_name` VARCHAR(45) NOT NULL,
+  `nickname` VARCHAR(45) NOT NULL,
+  `user_ip` varchar(45) NOT NULL DEFAULT '0',
+  `user_color` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (Id)
+);
+
+CREATE TABLE `message` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `message_content` TEXT NOT NULL,
+  `user_id` VARCHAR(45) NOT NULL,
+  `date_message` DATETIME NOT NULL ,
+  PRIMARY KEY (Id)
+);
+
+
+
+Pour l'utilisation de XMLhttpRequest avec test.js modifier message.php :
+    echo '<pre>'.'<ul>';
+      echo( 
+        '<h5>'.$message['nickname'].' :'.'</h5>'
+        .'<li>' .$message['message'].'</li>'
+        .'Envoyé à :'.$message['created_at']
+      );
+    }
+    echo '</ul>'.'</pre>';
+
+
+
+
+
+Méthode Fetch tp mini tchat 
+
+
+    - formulaire on click --> déclanche la fonction JS || écouteur d'evenement sur le bouton
+
+    Nouveau message :
+        PHP :
+        envoi du nouveau message et de l'utilisateur dans la bdd 
+
+
+    Refresh tchat :
+        PHP : 
+        récupération de la liste des messages dans la bdd
+        Encodé en JSON les messages et utilisateurs
+        echo le JSON
+
+        JS : 
+        requete fetch infini interval de 1 seconde pour récuperer le JSON
+        Transformation du JSON pour récuperer les messages et utilisateurs 
+        Affichage des messages dans la div message :
+          Suppression et création d'une div contenant tout les derniers messages toute les 1 seconde
